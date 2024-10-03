@@ -50,9 +50,9 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker build -t macadmins/crypt-server:latest .
+      - run: docker build -t tylerthepug/crypt-server:latest .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push macadmins/crypt-server:latest
+      - run: docker push tylerthepug/crypt-server:latest
       - run: apk add python2 py2-pip
       - run: pip install requests
       - run: python remote_build.py latest
@@ -67,7 +67,7 @@ jobs:
           docker_layer_caching: true
       - run: docker build -t macadmins/crypt-server:$CIRCLE_BRANCH .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push macadmins/crypt-server:$CIRCLE_BRANCH
+      - run: docker push tylerthepug/crypt-server:$CIRCLE_BRANCH
       - run: apk update
       - run: apk add python2 py2-pip
       - run: pip install requests
@@ -81,9 +81,9 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - run: docker build -t macadmins/crypt-server:$CIRCLE_TAG .
+      - run: docker build -t tylerthepug/crypt-server:$CIRCLE_TAG .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push macadmins/crypt-server:$CIRCLE_TAG
+      - run: docker push tylerthepug/crypt-server:$CIRCLE_TAG
       - run: apk add python2 py2-pip
       - run: pip install requests
       - run: python remote_build.py $CIRCLE_TAG
